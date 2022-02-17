@@ -1,21 +1,21 @@
 
    
-from model import Person
+from model import Author
 from model import Document
 import view
 
-def show_persons():
-    #gets list of all Person objects
-    people_in_db = Person.get_all()
+def show_authors():
+    #gets list of all authors objects
+    authors_in_db = Author.get_all()
     #calls view
-    return view.show_all_view(people_in_db)
+    return view.show_authors_view(authors_in_db)
 
 
-def start():
+def start_authors():
     view.start_view()
     _input = input()
     if _input == 'y':
-        return show_all()
+        return show_authors()
     else:
         return view.end_view()
 
@@ -23,9 +23,22 @@ def start():
 if __name__ == "__main__":
     start()
       
+    
+      
 def show_documents():
     #gets list of all Documents objects
     document_in_db = Document.get_all()
     #calls view
-    return view.show_all_view(document_in_db)
+    return view.show_document_view(document_in_db)
 
+def start_documents():
+    view.start_documents_view()
+    _input = input()
+    if _input == 'y':
+        return show_documents()
+    else:
+        return view.end_view()
+
+
+if __name__ == "__main__":
+    start()
