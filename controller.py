@@ -1,6 +1,7 @@
 
    
 from model import Person
+from model import Document
 import view
 
 def show_persons():
