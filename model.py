@@ -2,7 +2,7 @@ import csv
 import json
 
 
-class Person(object):
+class Author(object):
 
     def __init__(self, id_person=None, first_name=None, last_name=None):
         self.__id_person = id_person
@@ -19,7 +19,7 @@ class Person(object):
             csv_reader = csv.DictReader(csv_file)
             line_count = 0
             for row in csv_reader:
-                person = Person(row['id_person'], row['first_name'], row['last_name'])
+                person = Author(row['id_person'], row['first_name'], row['last_name'])
                 result.append(person)
                 line_count += 1
         return result
