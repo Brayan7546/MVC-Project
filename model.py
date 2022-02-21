@@ -15,16 +15,16 @@ class Author(object):
     @classmethod
     def get_all(self):
         result = list()
-        with open('db.txt', mode='r') as csv_file:
+        with open('db_authors.txt', mode='r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
             line_count = 0
             for row in csv_reader:
-                person = Author(row['id_person'], row['first_name'], row['last_name'])
-                result.append(person)
+                author = Author(row['id_person'], row['first_name'], row['last_name'])
+                result.append(author)
                 line_count += 1
         return result
 
-    class Document(object):
+class Document(object):
 
     def __init__(self, title=None, authors=None, pub_udate=None, id_book=None, edition=None, no_pag=None):
         self.__title = title
@@ -34,15 +34,18 @@ class Author(object):
         self.__edition= edition
         self.__no_pag= no_pag
         
+    def title(self):
+        return "%s" % (self.__title)
+        #return "%s %s" % (self.__first_name, self.__last_name)
 
     @classmethod
     def get_all(self):
         result = list()
-        with open('db.txt', mode='r') as csv_file:
+        with open('db_documents.txt', mode='r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
             line_count = 0
             for row in csv_reader:
                 document = Document(row['title'], row['id_book'], row['authors'], row['pub_udate'], row['edition'],row['no_pag'])
-                result.append(person)
+                result.append(document)
                 line_count += 1
         return result
